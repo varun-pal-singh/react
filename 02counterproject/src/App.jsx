@@ -12,7 +12,6 @@ function App() {
 
   const addValue = () => {
     counter += 1;
-
     if(counter <= 20){
       setCounter(counter);  // this will update all the occurance of counter in UI.
       console.log("value added", `value of counter ${counter}`);
@@ -21,7 +20,6 @@ function App() {
 
   const decValue = () => {
     counter -= 1;
-
     if(counter >= 0){
       setCounter(counter); // this will update all the occurance of counter in UI.
       console.log("value decreased", `value of counter ${counter}`);
