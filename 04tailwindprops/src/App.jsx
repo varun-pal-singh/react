@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Card from "./components/Card";
+import "./App.css";
 
-import './App.css'
 
 function App() {
+  let myObj = {
+    username: "varun",
+    age: 21,
+  }
+
+  let newArr=[1, 2, 3];
   return (
     <>
-      <h1 className='bg-green-400 rounded-xl p-4'>Tailwind test</h1>
+      <p className="p-4 bg-orange-400 rounded-xl m-4">
+        React + Tailwind is amazing
+      </p>
 
-      <h1 className="font-bold underline text-blue-700/75">
-        Hello world!
-      </h1>
-      <p className='p-4 bg-orange-400 rounded-xl m-4'>React + Tailwind is amazing</p>
+      <Card username="dalba" someObj={myObj} btn="visit me" />
+      <Card username="Chai aur code" someObj={newArr} />
     </>
-  )
+  );
 }
 
 export default App;
