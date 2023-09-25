@@ -5,6 +5,8 @@ import Condition from './quick-start/ConditionalRendering'
 import ShoppingList from './quick-start/RenderingList'
 import MyButton from './quick-start/RespondingToEvents'
 import MyCountButton from './quick-start/UpdatingTheScreen'
+import MyParentCountBtn from './quick-start/UsingParentState'
+
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
       <MyButton/> <br />
       <MyCountButton/> <br />
       <MyCountButton/>
+      <MyParentCountBtn/>
     </>
   )
 }

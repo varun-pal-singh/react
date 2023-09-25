@@ -1,6 +1,6 @@
 function MyButton(){
     return (
-        <button>This is a button</button>
+        <button className="border-black m-2 bg-orange-300 p-2 rounded">This is a button</button>
     )
 }
 
