@@ -2,6 +2,7 @@ import MyButton from "./react-basics/MyButton";
 import AboutPage from "./react-basics/WritingMarkupWithJSX";
 import Profile from "./react-basics/DisplayingData"
 import Conditional from "./react-basics/ConditionalRendering"
+import ShoppingList from "./react-basics/RenderingLists";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <AboutPage/>
       <Profile/>
       <Conditional />
+      <ShoppingList />
     </>
   )
 }
