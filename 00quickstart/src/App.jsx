@@ -1,26 +1,28 @@
-import MyApp from './quick-start/NestedComponents'
-import AboutPage from './quick-start/WritingMarkupWithJSX'
-import DisplayData from './quick-start/DisplayingData'
-import Condition from './quick-start/ConditionalRendering'
-import ShoppingList from './quick-start/RenderingList'
-import MyButton from './quick-start/RespondingToEvents'
-import MyCountButton from './quick-start/UpdatingTheScreen'
-import MyParentCountBtn from './quick-start/UsingParentState'
+import MyButton from "./react-basics/MyButton";
+import AboutPage from "./react-basics/WritingMarkupWithJSX";
+import Profile from "./react-basics/DisplayingData"
+import Conditional from "./react-basics/ConditionalRendering"
+import ShoppingList from "./react-basics/RenderingLists";
+import MyButton2 from "./react-basics/RespondingToEvents";
+import MyCountButton from "./react-basics/UpdatingTheScreen";
+import SameParent from "./react-basics/Hooks";
 
 
+import "./App.css";
 
 function App() {
   return (
     <>
-      <DisplayData/>
-      <MyApp/>
+      <h1>hello react!!</h1>
+      <MyButton/> <br/>
       <AboutPage/>
-      <Condition/>
-      <ShoppingList/>
-      <MyButton/> <br />
-      <MyCountButton/> <br />
-      <MyCountButton/>
-      <MyParentCountBtn/>
+      <Profile/>
+      <Conditional />
+      <ShoppingList />
+      <MyButton2 /> <br />
+      <MyCountButton /> <br />
+      <MyCountButton />
+      <SameParent />
     </>
   )
 }
