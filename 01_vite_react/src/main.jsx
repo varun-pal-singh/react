@@ -2,46 +2,43 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 
-function MyApp(){
-  return (
-    <>
-      <div>
-        <h1>CustomApp!</h1>
-      </div>
-      <div>
-        hello
-      </div>
-    </>
-  )
-}
-
-const anotherElement = (
-  <a href="https://google.com" target='_blank'>Visit google</a>
-)
-
-// const ReactElement = {
-//   type: "a",
-//   props: { 
-//       href: 'https://google.com',
-//       target: "_blank",
-//   },
-//   childern: "click me to visit google",
+// function MyApp(){
+//   const username = "chai aur code "
+//   return (
+//     <div>
+//       <h1>Custom App | Chai aur code</h1>
+//     </div>
+//   )
 // }
 
-const anotherUser = "chai aur code";
+// const reactEl = {
+//   type : 'a',
+//   props : {
+//     href : 'https://www.google.com',
+//     target : "_blank",
+//   },
+//   children : "Click me to visit google"
+// }
 
-const reactElement = React.createElement(
-  'a',
-  {
-    href: 'https://google.com',
-    target: "_blank",
-    id: "google",
+const anotherEl = (
+  <a href="https://google.com" target='_blank'>click me to visit google | anotherEl</a>
+)
+
+const anotherUser = " Chai aur reactEl2 "
+
+const reactEl2 = React.createElement(
+  "a", {
+    "href": "https://www.google.com",
+    "target" : "_blank",
   },
-  "Click me to visit google",
-  anotherUser, // Evaluated Expression
+  "click me to visit google | reactEl2",
+  anotherUser
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+
     // <App/>
-    reactElement
+    // reactEl
+    // anotherEl
+    reactEl2
 )
