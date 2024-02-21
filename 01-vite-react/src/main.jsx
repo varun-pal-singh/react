@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+// import {jsx as _jsx } from 'react/jsx-runtime.js'
 import App from './App.jsx'
 
 const reactElement = {
@@ -12,7 +13,9 @@ const reactElement = {
 }
 
 const reactElement1 = (
-  <a href="https://google.com" target='_blank'>click me to visit google</a>
+  <a href="https://google.com" target='_blank'
+    style={{backgroundColor: "black", color: "red"}}
+  >click me to visit google</a>
 )
 
 const reactElement2 = React.createElement(
@@ -25,12 +28,29 @@ const reactElement2 = React.createElement(
 
 )
 
+const user = "Varun"
+const aTag = React.createElement(
+  'a',
+  {href: "google.com", target: '_blank'},
+  `click to visit google`
+)
+
 const reactElement3 = React.createElement(
+  // tag name
   'p',
+  // props
   {
-    // style: 'backgroundColor: black',
+    id: "para",
+    style: {                  // style is also a object
+      backgroundColor: 'red',
+      color: "pink",
+    }
   },
-  `P tag | Chai aur react`
+  // children
+  `P tag | Chai aur react ${{aTag}}`,
+  // now comes evaluated expression (final value of variable)
+  user,
+  aTag
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
