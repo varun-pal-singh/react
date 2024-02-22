@@ -6,14 +6,24 @@ function App() {
 
   function handleAddClick(){
     if (value >= 10) return
-    value += 1
-    setValue(value)
+    // value += 1
+
+    // setValue(value - 1)
+    // setValue(value - 1)
+    // setValue(value - 1)
+    // setValue(value + 1) // only last wala count
+
+    setValue(prevCounter => prevCounter + 1)
+    setValue(prevCounter => prevCounter + 1)
+    setValue(prevCounter => prevCounter + 1)
+    setValue(prevCounter => prevCounter + 1)
+
   }
 
   function handleRemoveClick(){
-    if (value <= 0)  return
-    value -= 1
-    setValue(value)
+    if (value <= 0) return
+    // value -= 1
+    setValue(value - 1)
   }  
 
   return (
