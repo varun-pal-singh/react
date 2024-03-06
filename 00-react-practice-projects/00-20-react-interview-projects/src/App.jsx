@@ -1,12 +1,20 @@
-import Accordion from "./components/Accordion"
-import RandomColor from "./components/RandomColor"
+import {Accordion, RandomColor, StarRating, ImageSlider} from './components/index'
 
 export default function App() {
+
+  const imageSlidingUrl = `https://picsum.photos/v2/list`, page = 1, limit = 10
+
   return (
     <>
-    {/* <Accordion /> */}
+      {/* <Accordion />
 
-    <RandomColor />
-    </>                    
+      <RandomColor />
+
+      <StarRating noOfStars={10}/>
+
+      <ImageSlider url={imageSlidingUrl} page={page} limit={limit} /> */}
+
+      
+    </>
   )
 }
