@@ -6,13 +6,13 @@ export default function App() {
 
   return (
     <>
-      {/* <Accordion />
+      {/* <Accordion /> */}
 
-      <RandomColor />
+      {/* <RandomColor /> */}
 
-      <StarRating noOfStars={10}/>
+      {/* <StarRating noOfStars={10}/> */}
 
-      <ImageSlider url={imageSlidingUrl} page={page} limit={limit} /> */}
+      {/* <ImageSlider url={imageSlidingUrl} page={page} limit={limit} /> */}
 
       
     </>
