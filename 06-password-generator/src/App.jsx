@@ -1,90 +1,109 @@
-import { useState, useCallback, useEffect, useRef } from "react"
-
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 function App() {
+
+  // useState hook
   const [length, setLength] = useState(8)
-  const [numAllow, setNumAllow] = useState(false)
-  const [charAllow, setCharAllow] = useState(false)
-  const [passwd, setPasswd] = useState('')
+  const [numAllowed, setNumAllowed] = useState(false)
+  const [charAllowed, setCharAllowed] = useState(false)
+  const [password, setPassword] = useState('')
 
-  // useRef hook
-  const passwdRef = useRef(null)
+  // useRef hook to take reference of password using copy button
+  const passwordRef = useRef(null)
 
-  const passwdGenerator = useCallback(() => {
-    let pass = ''
-    let string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-    if (numAllow) string += '0123456789'
-    if (charAllow) string += '!@#$%^&*()_-+={}[]'
+  const copyPasswordToClipboard = useCallback((e) => {
+    e.target.style.backgroundColor = 'black'
+    passwordRef.current?.select()
+    passwordRef.current?.setSelectionRange(0, 16)
+    window.navigator.clipboard.writeText(password)
+  }, [password])
 
-    for (let i = 1; i <= length; i++) {
-      let charIdx = Math.floor(Math.random() * (string.length + 1))
-      pass += string.charAt(charIdx)
+  // useCallback hook to the cache the function whenever their
+  // is a change in dependencies
+  const passwordGenerator = useCallback(() => {
+    let passwd = ''
+    let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    if (numAllowed) {
+      str += '0123456789'
+    }
+    if (charAllowed) {
+      str += '~!@#$%^&*()-_+={}[]'
     }
 
-    setPasswd(pass) // update password
-  }, [length, numAllow, charAllow, setPasswd])
+    for (let i = 0; i < length; i++) {
+      const charIdx = Math.floor((Math.random() * str.length) + 1)
+      passwd += str.charAt(charIdx)
+    }
 
-  const copyPasswdToClipboard = useCallback(() => {
-    // UI selection only
-    passwdRef.current?.select()
-    passwdRef.current?.setSelectionRange(0, 3)
-    // copypart 
-    window.navigator.clipboard.writeText(passwd)
-  }, [passwd])
+    setPassword(passwd)
+  }, [length, numAllowed, charAllowed, setPassword])
 
-  // passwdGenerator()
-  // useEffect
-  useEffect(() => {
-    passwdGenerator()
-  }, [length, numAllow, charAllow, passwdGenerator])
 
+  // useEffect hook to run the function whenever their is 
+  // change in dependencies or page reload
+  useEffect(() => passwordGenerator(), [length, numAllowed, charAllowed, passwordGenerator])
 
   return (
     <>
-      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 my-8 text-orange-500 bg-gray-500">
-        <h1 className=' my-3 text-xl text-center text-white' >Password Generator</h1>
-        <div className="flex shadow rounded-lg overflow-hidden mb-4">
-          <input type="text"
-            value={passwd}
-            className="outline-none w-full py-1 px-3"
-            placeholder="Password"
+      <div className='flex flex-wrap justify-center text-2xl text-blue bg-sky-500 shadow-xl h-10'>
+        Password Generator
+      </div>
+
+      <div className='w-full max-w-md mx-auto shadow-lg rounded-lg p-4 my-8 text-orange-500 bg-gray-500'>
+
+
+        <div className='flex shadow-md rounded-lg overflow-hidden mb-4'>
+          <input
+            type="text"
+            value={password}
+            className='outline-none w-full py-1 px-3'
+            placeholder='password'
             readOnly
-            ref={passwdRef}
+
+            // useRef usecase
+            ref={passwordRef}
           />
-          <button className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0"
-          onClick={copyPasswdToClipboard}
-          >Copy</button>
+
+          <button
+            className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
+            onClick={(e) => copyPasswordToClipboard(e)}
+            >
+            Copy
+          </button>
         </div>
-        <div className="flex text-sm gap-x-2">
-          <div className="flex items-center gap-x-1">
-            <input type="range"
+
+        <div className='flex text-sm gap-x-2'>
+          <div className='flex item-center gap-x-1'>
+            <input
+              type="range"
               min={6}
               max={100}
               value={length}
-              className="cursor-pointer"
-              onChange={(evt) => { setLength(evt.target.value) }}
+              className='cursor-pointer'
+              onChange={(e) => setLength(e.target.value)}
             />
-            <label>Length : {length}</label>
+            <label>Length: {length}</label>
           </div>
-          <div className="flex items-center gap-x-1">
-            <input type="checkbox"
-              defaultChecked={numAllow}
-              id="numInput"
-              onChange={() => {
-                setNumAllow((prev) => !prev)
-              }} />
-            <label htmlFor="numInput">Numbers</label>
+
+          <div className='flex items-center gap-x-1'>
+            <input
+              type="checkbox"
+              value={numAllowed}
+              onChange={() => setNumAllowed(prev => !prev)}
+            />
+            <label>Number</label>
           </div>
-          <div className="flex items-center gap-x-1">
-            <input type="checkbox"
-              defaultChecked={charAllow}
-              id="charInput"
-              onChange={() => {
-                setCharAllow((prev) => !prev)
-              }} />
-            <label htmlFor="charInput">Characters</label>
+
+          <div className='flex items-center gap-x-1'>
+            <input
+              type="checkbox"
+              value={charAllowed}
+              onChange={() => setCharAllowed(prev => !prev)}
+            />
+            <label>Character</label>
           </div>
         </div>
+
       </div>
     </>
   )

@@ -1,6 +1,13 @@
-import Accordion from "./Accordion";
-import ImageSlider from "./ImageSlider";
-import RandomColor from "./RandomColor";
-import StarRating from "./StarRating";
+import Accordian from "./Accordian/Accordian.jsx";
+import RandomColor from "./RandomColor/RandomColor.jsx";
+import StarRating from "./StarRating/StarRating.jsx";
+import ImageSlider from "./ImageSlider/ImageSlider.jsx";
+import LoadmoreData from "./LoadmoreData/LoadmoreData.jsx";
 
-export {Accordion, ImageSlider, RandomColor, StarRating}
+export {
+    Accordian,
+    RandomColor,
+    StarRating,
+    ImageSlider,
+    LoadmoreData,
+}
